@@ -12,7 +12,7 @@ func main() {
 	var elfCalories []int
 	var line string
 	var cal int
-	file, err := os.OpenFile("input/day1.txt", os.O_RDONLY, 0755)
+	file, err := os.OpenFile("input/day1a.txt", os.O_RDONLY, 0755)
 	if err != nil {
 		fmt.Printf("Could not open file: %v\n", err)
 		os.Exit(1)
@@ -41,5 +41,7 @@ func main() {
 		}
 	}
 	sort.Ints(elfCalories)
-	fmt.Println(elfCalories[len(elfCalories)-1])
+	fmt.Printf("Elf with most calories: %d\n", elfCalories[len(elfCalories)-1])
+	// Part b of the puzzle
+	fmt.Printf("Total calories for the top 3 elfs with most calories: %d\n", elfCalories[len(elfCalories)-1]+elfCalories[len(elfCalories)-2]+elfCalories[len(elfCalories)-3])
 }
