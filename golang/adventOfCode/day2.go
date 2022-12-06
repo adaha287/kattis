@@ -20,6 +20,18 @@ func main() {
 		"C Y": 2 + 0,
 		"C Z": 3 + 3,
 	}
+	// Part 2
+	handmap := map[string]string{
+		"A X": "A Z",
+		"A Y": "A X",
+		"A Z": "A Y",
+		"B X": "B X",
+		"B Y": "B Y",
+		"B Z": "B Z",
+		"C X": "C Y",
+		"C Y": "C Z",
+		"C Z": "C X",
+	}
 
 	file, err := os.OpenFile("input/day2.txt", os.O_RDONLY, 0755)
 	if err != nil {
@@ -38,7 +50,9 @@ func main() {
 
 	for fileScanner.Scan() {
 		line = fileScanner.Text()
-		if score, ok := scoreMap[line]; ok {
+		// Solution for second part: convert input to same as before via handmap
+		hand, _ := handmap[line]
+		if score, ok := scoreMap[hand]; ok {
 			points += score
 		}
 	}
